@@ -11,6 +11,10 @@ body {
   --background-color: rgb(54, 49, 49);
   --primary-color: rgb(5, 112, 112);
 }
+.wh-full{
+  width: 100%;
+  height: calc(100% - 3em);
+}
 
 [_nghost-ng-c2388939186]{
   color: white !important;

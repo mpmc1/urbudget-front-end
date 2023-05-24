@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+import { MaterialModule } from './material/material.module';
+import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
   FooterComponent
@@ -9,8 +11,10 @@ const COMPONENTS = [
 @NgModule({
   declarations: [COMPONENTS],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    RouterModule
   ],
-  exports:[COMPONENTS]
+  exports:[COMPONENTS, MaterialModule]
 })
 export class SharedModule { }
