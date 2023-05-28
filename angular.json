@@ -65,7 +65,7 @@
             },
             "development": {
               "browserTarget": "new-urBudgetFront:build:development"
-            }
+            }            
           },
           "defaultConfiguration": "development"
         },

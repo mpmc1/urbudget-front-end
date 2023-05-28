@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 const PAGES=[
   DashboardComponent,
@@ -17,7 +18,9 @@ const PAGES=[
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports:[PAGES]
 })
