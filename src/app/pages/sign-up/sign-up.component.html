@@ -2,24 +2,24 @@
     <div class="box">
       <div class="form-container">
           <h2>WELCOME!</h2>
-          <form>
+          <form [formGroup]="signUpForm" >
             <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput type="text">
+                <input matInput formControlName="name" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Last name</mat-label>
-                <input matInput type="text">
+                <input matInput formControlName="lastname" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput type="text">
+                <input matInput formControlName="email" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput type="password">
+                <input matInput formControlName="password" type="password">
             </mat-form-field>
-          <button mat-raised-button color="primary">Sign Up</button>
+          <button mat-raised-button color="primary" (click)="signUp()">Sign Up</button>
           </form>
           <span style="margin-top: 25px;">Already have account? &nbsp;<a [routerLink]="['/login']">LogIn</a></span>
   

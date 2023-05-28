@@ -2,16 +2,16 @@
   <div class="box">
     <div class="form-container">
         <h2>WELCOME BACK!</h2>
-        <form >
+        <form>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" formControlName="email">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password">
+            <input matInput type="password" formControlName="password">
         </mat-form-field>
-        <button mat-raised-button color="primary">LogIn</button>
+        <button mat-raised-button color="primary" (click)="logIn()">LogIn</button>
         </form>
         <span style="margin-top: 25px;">Are you new? &nbsp;<a [routerLink]="['/signUp']">SignUp</a></span>
 
