@@ -5,7 +5,7 @@ export interface signUpForm {
     password: String;
 }
 
-export interface loginForm{
+export interface logInForm{
     email: String;
     password: String;
 }
