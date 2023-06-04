@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { BudgetComponent } from './budget/budget.component';
+import { RecordOutComponent } from './record-out/record-out.component';
 
 
 const PAGES=[
@@ -22,7 +23,7 @@ const PAGES=[
 ]
 
 @NgModule({
-  declarations: [PAGES, ChartsComponent, BudgetComponent],
+  declarations: [PAGES, ChartsComponent, BudgetComponent, RecordOutComponent],
   imports: [
     CommonModule,
     SharedModule,
