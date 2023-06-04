@@ -2,14 +2,20 @@
 html,
 body {
   height: 100%;
+  color: rgb(255, 255, 255);
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--background-color);
+  color: (255,255,255);
 
-  --background-color: rgb(54, 49, 49);
-  --primary-color: rgb(5, 112, 112);
+  --background-color: rgb(231, 231, 231);
+  --primary-color: rgb(8, 126, 139);
+  --secondary-color: rgb(249, 199, 132);
+  --terciary-color: rgb(252, 122, 30);
+  
+  
 }
 .wh-full{
   width: 100%;
@@ -19,3 +25,13 @@ body {
 [_nghost-ng-c2388939186]{
   color: white !important;
 }
+a{
+  color:var(--terciary-color);
+}
+.mdc-button, .mdc-button--raised, .mat-mdc-raised-button, .mat-terciario,
+.mat-mdc-button-base, .mat-md-button-persistent-ripple, .mdc-button__ripple
+{
+  background-color: var(--terciary-color);
+}
+
+

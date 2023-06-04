@@ -1,10 +1,7 @@
 import { Component,OnInit} from '@angular/core';
-
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/shared/services/token.service';
-
-
 
 @Component({
   selector: 'app-sign-up',
@@ -25,7 +22,6 @@ export class SignUpComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
-
   } 
 
   signUp(){
@@ -37,6 +33,4 @@ export class SignUpComponent implements OnInit{
       alert("Something went wrong")
     })
   }
-
-
 }

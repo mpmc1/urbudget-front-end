@@ -65,7 +65,11 @@
             },
             "development": {
               "browserTarget": "new-urBudgetFront:build:development"
-            }            
+            },
+            "options": {
+              "browserTarget": "new_urBudgetFront:build",
+              "proxyConfig": "proxy.conf.json"
+            }      
           },
           "defaultConfiguration": "development"
         },

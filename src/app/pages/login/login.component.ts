@@ -2,34 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { TokenService } from 'src/app/shared/services/token.service';
-
-
+import { UserModel } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+
+export class LoginComponent implements OnInit{
   
-  public signUpForm !: FormGroup
+  public logInForm !: FormGroup
   constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService) { }
 
   ngOnInit(): void {
-    this.signUpForm = this.formBuilder.group({      
-      email: ['', [Validators.required, Validators.email]],
+    this.logInForm = this.formBuilder.group({      
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
-
   } 
-
+  
   logIn(){
-    this.tokenService.signUp(this.signUpForm.value)
-    .subscribe(res=>{
-      alert("Loged In")
-      this.router.navigate(['/dashboard'])
-    },err=>{
-      alert("Something went wrong")
-    })
+    this.tokenService.logIn(this.logInForm.value).subscribe({
+      next: (user: UserModel) => {
+        user.email = this.logInForm.get(['username'])?.value;
+        this.tokenService.saveUserToLocal(user);
+        alert('Loged In');
+        this.router.navigate(['/dashboard']);
+      },
+      error: (error) => {
+        alert('Login Failed');
+      }
+    })    
   }
 }

@@ -1,18 +1,39 @@
 import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { TokenService } from '../../shared/services/token.service';
 
 @Injectable()
 export class JwtInterceptorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private tokenService: TokenService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
+
+    if (token){
+      request = request.clone({
+        setHeaders: {
+          Authorization: `token ${token}`,
+       },
+      });
+    }
+    
+    return next.handle(request).pipe(
+      catchError((err) => {
+        if (err.status ===401){
+          this.tokenService.logout();
+        }
+        const error = err.error.message || err.statusText;
+        return throwError(error);
+      }
+      )
+    )
   }
 }

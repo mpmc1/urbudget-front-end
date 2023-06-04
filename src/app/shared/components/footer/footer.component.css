@@ -2,12 +2,12 @@
     width: 100%;
     height: 3em;
     display: flex;
-    background-color: rgb(69, 72, 73);
+    background-color: var(--primary-color);
     justify-content: center;
     align-items: center;
 }
 .text{
-    color: grey;
+    
     height: 100%;
     margin-bottom: 0px;
     display: flex;
