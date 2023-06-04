@@ -11,6 +11,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { BudgetComponent } from './budget/budget.component';
 
 
 const PAGES=[
@@ -21,7 +22,7 @@ const PAGES=[
 ]
 
 @NgModule({
-  declarations: [PAGES, ChartsComponent],
+  declarations: [PAGES, ChartsComponent, BudgetComponent],
   imports: [
     CommonModule,
     SharedModule,

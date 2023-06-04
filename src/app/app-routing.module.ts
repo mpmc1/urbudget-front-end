@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
+
 const routes: Routes = [
   {
     path: '',
