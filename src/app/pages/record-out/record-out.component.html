@@ -1,11 +1,11 @@
-<button class="btn btn-primary" (click)="openOutcomesModal()">Record Outcomes</button>
+<button class="button" mat-raised-button color="primary" (click)="openOutcomesModal()">Record Outcomes</button>
 
 <div class="modal" [class.d-block]="outcomesModalVisible">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">Record Outcomes</h2>
-        <button type="button" class="close" (click)="closeOutcomesModal()">
+        <button type="button" class="close" color (click)="closeOutcomesModal()">
           <span>&times;</span>
         </button>
       </div>

@@ -1,8 +1,3 @@
-.btn{
-    background-color: var(--secondary-color);
-    float: right
-}
-
 .btn-primary{
     background-color: var(--secondary-color);
 }
@@ -11,6 +6,3 @@
     background-color: var(--primary-color);
 }
 
-.modal{
-    margin-top: 10%;
-}

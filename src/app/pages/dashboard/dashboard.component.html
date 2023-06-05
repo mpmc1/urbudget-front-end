@@ -1,21 +1,24 @@
-<app-charts></app-charts>
+<div class="general-container">
+    <app-charts style="margin-top: 30px; width: 100%;"></app-charts>
+    <div class="modal-buttons">
+        <app-record-out></app-record-out>
+        <app-budget style="margin-left: 30px;"></app-budget>
+    </div>
+        <div class="table-container">
+            <table class="table table-bordered">
+                <caption>Current Budget</caption>
+                <tr>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Year</th>
+                </tr>
+                <tr>
+                    <td>{{ammount}}</td>
+                    <td>{{year}}</td> 
+                </tr>
+            </table>
+        </div>
+    <div class="test-button">
+        <button (click)="test()">Test</button>
+    </div>
 
-<app-record-out></app-record-out>
-<app-budget></app-budget>
-
-
-<table class="table table-bordered">
-    <caption>Current Budget</caption>
-    <tr>
-        <th scope="col">Budget</th>
-        <th scope="col">Year</th>
-    </tr>
-    <tr>
-        <td>{{ammount}}</td>
-        <td>{{year}}</td> 
-    </tr>
-</table>
-
-<button (click)="test()">Test</button>
-
-
+</div>    

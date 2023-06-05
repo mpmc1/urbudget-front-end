@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<button class="btn" (click)="openModal()">Record Budget</button>
+<button mat-raised-button color="primary" class="button" (click)="openModal()" style="margin-right: 10px;">Record Budget</button>
 
 <div class="modal" [class.d-block]="modalVisible">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">Register Budget</h2>
-        <button type="button" class="close" (click)="closeModal()">
+        <button type="button" class="close" (click)="closeModal()" >
           <span>&times;</span>
         </button>
       </div>
