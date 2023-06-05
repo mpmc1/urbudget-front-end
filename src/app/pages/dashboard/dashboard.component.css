@@ -1,0 +1,8 @@
+.table{
+    background-color: var(--primary-color);
+    text-align: center;
+    width: 90%;
+    margin:auto;
+    margin-top: 3%;
+}
+

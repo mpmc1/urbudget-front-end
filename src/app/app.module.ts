@@ -12,6 +12,7 @@ import { JwtInterceptorInterceptor } from './token/interceptor/jwt-interceptor.i
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,4 +35,6 @@ import { JwtInterceptorInterceptor } from './token/interceptor/jwt-interceptor.i
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

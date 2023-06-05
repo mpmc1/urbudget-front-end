@@ -3,7 +3,6 @@ import {Router} from '@angular/router'
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { UserModel } from 'src/app/shared/models/user.model';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,15 +12,20 @@ import { UserModel } from 'src/app/shared/models/user.model';
 export class LoginComponent implements OnInit{
   
   public logInForm !: FormGroup
-  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService) { }
-
+  state: string = 'none';
+  
+  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService) { 
+    
+  }
   ngOnInit(): void {
     this.logInForm = this.formBuilder.group({      
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
+    this.tokenService.logout();
+    
   } 
-  
+
   logIn(){
     this.tokenService.logIn(this.logInForm.value).subscribe({
       next: (user: UserModel) => {
@@ -35,4 +39,5 @@ export class LoginComponent implements OnInit{
       }
     })    
   }
+
 }

@@ -1,5 +1,6 @@
 #chart{
-    width: 100%;
-    background-color: aliceblue;
-    
+    width: 95%;
+    background-color: rgb(153, 173, 190);
+    margin: auto;
+    margin-bottom: 2%;
 }

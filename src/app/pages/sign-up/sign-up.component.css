@@ -1,9 +1,9 @@
-.container{
+.contenedor{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.box{
+.caja{
     width: 70%;
     height: 80%;
     background-color: var(--primary-color);
@@ -14,6 +14,7 @@
     justify-content: space-evenly;
     padding: 0 20px 0 20px;
 }
+
 .form-container{
     width: 35%;
     border-right: 1px solid;
@@ -28,8 +29,7 @@
 
 form{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 
 h1{

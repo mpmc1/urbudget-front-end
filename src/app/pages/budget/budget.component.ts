@@ -1,23 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { budget } from 'src/app/shared/models/dashboard.model';
+import { ServiceRecordService } from 'src/app/shared/service-record.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css']
 })
-export class BudgetComponent {
+export class BudgetComponent implements OnInit {
   modalVisible = false;
-  budgetForm: FormGroup;
+  budgetForm: FormGroup; 
+  
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService, private dashboard:DashboardComponent) {
     this.budgetForm = this.formBuilder.group({
       year: ['', Validators.required],
-      amount: ['', Validators.required],
+      ammount: ['', Validators.required],
       monthIncomes: ['', Validators.required],
       monthOutcomes: ['', Validators.required]
     });
   }
+  
+  ngOnInit(): void {
+    this.budgetService.getBudget().subscribe({
+      next: (budget:budget) => {
+        this.budgetService.setBudget(budget);
+      }
+    })    
+  }
+  
 
   openModal() {
     this.modalVisible = true;
@@ -28,13 +42,15 @@ export class BudgetComponent {
   }
 
   saveBudget() {
-    if (this.budgetForm.valid) {
-      console.log('Year:', this.budgetForm.value.year);
-      console.log('Amount:', this.budgetForm.value.amount);
-      console.log('Expected Income:', this.budgetForm.value.monthIncomes);
-      console.log('Expected Outcome:', this.budgetForm.value.monthOutcomes);
-      
-      this.modalVisible = false;
-    }
+    this.budgetService.crearBudget(this.budgetForm.value).subscribe({
+      next(budget:budget){
+      alert(budget.data.year + budget.data.ammount);
+      }
+    })
   }
+
+
+ 
 }
+
+

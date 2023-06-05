@@ -1,4 +1,21 @@
 <app-charts></app-charts>
-<app-budget></app-budget>
+
 <app-record-out></app-record-out>
+<app-budget></app-budget>
+
+
+<table class="table table-bordered">
+    <caption>Current Budget</caption>
+    <tr>
+        <th scope="col">Budget</th>
+        <th scope="col">Year</th>
+    </tr>
+    <tr>
+        <td>{{ammount}}</td>
+        <td>{{year}}</td> 
+    </tr>
+</table>
+
+<button (click)="test()">Test</button>
+
 
