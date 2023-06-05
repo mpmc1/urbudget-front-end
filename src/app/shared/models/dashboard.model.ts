@@ -1,4 +1,4 @@
-export interface registerBudget{
+export interface budgetForm{
     year: number,
     ammount: number,
     monthIncomes :number,

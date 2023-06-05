@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-budget',
@@ -7,10 +8,16 @@ import { Component } from '@angular/core';
 })
 export class BudgetComponent {
   modalVisible = false;
-  year = '';
-  expectedIncome = '';
-  expectedOutcome = '';
-  amount = '';
+  budgetForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.budgetForm = this.formBuilder.group({
+      year: ['', Validators.required],
+      amount: ['', Validators.required],
+      monthIncomes: ['', Validators.required],
+      monthOutcomes: ['', Validators.required]
+    });
+  }
 
   openModal() {
     this.modalVisible = true;
@@ -21,11 +28,13 @@ export class BudgetComponent {
   }
 
   saveBudget() {
-    console.log('Year:', this.year);
-    console.log('Amount:', this.amount);
-    console.log('Expected Income:', this.expectedIncome);
-    console.log('Expected Outcome:', this.expectedOutcome);
-    
-    this.modalVisible = false;
+    if (this.budgetForm.valid) {
+      console.log('Year:', this.budgetForm.value.year);
+      console.log('Amount:', this.budgetForm.value.amount);
+      console.log('Expected Income:', this.budgetForm.value.monthIncomes);
+      console.log('Expected Outcome:', this.budgetForm.value.monthOutcomes);
+      
+      this.modalVisible = false;
+    }
   }
 }
