@@ -35,11 +35,6 @@ export class ChartsComponent{
   
   public valor = this.budget.budget.value.data.mothOutcomes;
   public datos = [this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor];
-
-
-  
- 
-
   constructor(private budget:ServiceRecordService) {
     
     
@@ -56,7 +51,10 @@ export class ChartsComponent{
         },
         {
           name: "IDEAL",
-          data: this.datos.map(function(x) {return x - Math.floor(Math.random() * 10)})       
+          data: this.datos.map(function(x) {
+            x = Math.floor(Math.random() * 10)*10;
+            return x - Math.floor(Math.random() * 10)
+          })       
         }        
       ],
       chart: {
