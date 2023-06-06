@@ -7,7 +7,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { TokenService } from '../../shared/services/token.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
 
 @Injectable()
 export class JwtInterceptorInterceptor implements HttpInterceptor {

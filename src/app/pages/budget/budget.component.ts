@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { budget } from 'src/app/shared/models/dashboard.model';
-import { ServiceRecordService } from 'src/app/shared/service-record.service';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { BehaviorSubject } from 'rxjs';
+import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
+
+
 
 @Component({
   selector: 'app-budget',
@@ -15,7 +15,7 @@ export class BudgetComponent implements OnInit {
   budgetForm: FormGroup; 
   
 
-  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService, private dashboard:DashboardComponent) {
+  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService) {
     this.budgetForm = this.formBuilder.group({
       year: ['', Validators.required],
       ammount: ['', Validators.required],
@@ -44,7 +44,7 @@ export class BudgetComponent implements OnInit {
   saveBudget() {
     this.budgetService.crearBudget(this.budgetForm.value).subscribe({
       next(budget:budget){
-      alert(budget.data.year + budget.data.ammount);
+      alert('Año: ' + budget.data.year +' Cantidad: '+ budget.data.ammount);
       }
     })
   }

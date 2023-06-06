@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { budget, budgetForm } from './models/dashboard.model'; 
+import { budget, budgetForm } from '../../models/dashboard.model'; 
 
 
 
@@ -35,6 +35,7 @@ export class ServiceRecordService {
 
   setBudget(budget:budget){
     this.budget.next(budget);
+    localStorage.setItem('budget', JSON.stringify(budget.data.id)?.replace(/['"]+/g, ''));
   }
   
 }

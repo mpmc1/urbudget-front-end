@@ -15,8 +15,20 @@ export interface budget{
     },
     message: []
 }
-export interface transaction{}
+export interface transaction{
+    data: [],
+    message: []
+}
 
 export interface transactionForm{
-    
+    ammount: number,
+    description: string
+}
+
+export interface individualTransaction{
+    id: string,
+    dateOfTransaction: Date,
+    ammount: number, 
+    description: string, 
+    budget: {}
 }

@@ -1,7 +1,7 @@
 import { Component,OnInit} from '@angular/core';
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
 
 @Component({
   selector: 'app-sign-up',

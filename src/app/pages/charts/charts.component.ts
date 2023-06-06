@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
 
 import {
   ChartComponent,
@@ -28,22 +29,34 @@ export type ChartOptions = {
 })
 
 export class ChartsComponent{
-  public chartOptions: ChartOptions;
-  public datos = [20, 51, 45, 51, 49, 62, 69, 91, 148, 200, 150, 210]
+  
 
-  constructor() {
+  public chartOptions: ChartOptions;
+  
+  public valor = this.budget.budget.value.data.mothOutcomes;
+  public datos = [this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor];
+
+
+  
+ 
+
+  constructor(private budget:ServiceRecordService) {
+    
+    
 
     this.chartOptions = {
       series: [
         {
-          name: "Desktops",
-          data: this.datos
-
+          name: "Ammounts",
+          data: this.datos.map(function(x) {
+            x = Math.floor(Math.random() * 10);
+            return  x * 10;
+          })
 
         },
         {
           name: "IDEAL",
-          data: this.datos.map(function(x) {return x*2})       
+          data: this.datos.map(function(x) {return x - Math.floor(Math.random() * 10)})       
         }        
       ],
       chart: {

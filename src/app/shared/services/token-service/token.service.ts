@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { logInForm, signUpForm } from '../models/security.model';
-import { UserModel } from '../models/user.model';
-import { ServiceRecordService } from '../service-record.service';
+import { logInForm, signUpForm } from '../../models/security.model';
+import { UserModel } from '../../models/user.model';
+import { ServiceRecordService } from '../budget-service/service-record.service';
 
 
 @Injectable({
@@ -33,7 +33,7 @@ export class TokenService {
   saveUserToLocal(user: UserModel){
     this.userProfile.next(user);    
     localStorage.setItem('token', JSON.stringify(user.token)?.replace(/['"]+/g, ''));
-    localStorage.setItem('user', JSON.stringify(user.email)?.replace(/['"]+/g, ''));
+    localStorage.setItem('user', JSON.stringify(user.email)?.replace(/['"]+/g, ''));    
   }
 
   logout() {
