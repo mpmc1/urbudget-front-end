@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
       next: (user: UserModel) => {
         user.email = this.logInForm.get(['username'])?.value;
         this.tokenService.saveUserToLocal(user);
-        alert('Loged In');
+        alert('Wellcome');
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {

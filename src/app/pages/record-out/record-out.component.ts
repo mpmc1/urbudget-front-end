@@ -51,7 +51,7 @@ export class RecordOutComponent implements OnInit{
   saveOutcomes() {
     this.transactionService.createTransaction(this.transactionForm.value).subscribe({
       next(transaction:transaction){
-      alert('Enviada');
+      alert('Transaction Sent');
       }
     })
   }

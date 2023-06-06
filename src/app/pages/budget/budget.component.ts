@@ -44,7 +44,7 @@ export class BudgetComponent implements OnInit {
   saveBudget() {
     this.budgetService.crearBudget(this.budgetForm.value).subscribe({
       next(budget:budget){
-      alert('Año: ' + budget.data.year +' Cantidad: '+ budget.data.ammount);
+      alert('Budget Registrado');
       }
     })
   }
