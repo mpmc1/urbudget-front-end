@@ -46,7 +46,13 @@ export class BudgetComponent implements OnInit {
       next(budget:budget){
       alert('Budget Registrado');
       }
-    })
+    });
+
+    this.budgetService.getBudget().subscribe({
+      next: (budget:budget) => {
+        this.budgetService.setBudget(budget);
+      }
+    });
   }
 
 

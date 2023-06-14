@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit{
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
-    this.tokenService.logout();
-    
+    this.tokenService.logout();    
   } 
 
   logIn(){
