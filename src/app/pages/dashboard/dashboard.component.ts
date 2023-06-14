@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
 import { TransactionService } from 'src/app/shared/services/transaction-service/transaction.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
 import { individualTransaction } from 'src/app/shared/models/dashboard.model';
 import { BehaviorSubject } from 'rxjs';
 
@@ -28,7 +29,7 @@ export class DashboardComponent{
   })
   
 
-  constructor(private router: Router, private budgetService: ServiceRecordService, private transaction: TransactionService) {    
+  constructor(private router: Router, private budgetService: ServiceRecordService, private transaction: TransactionService, private tokenService:TokenService) {    
   }  
 
   test(){    
@@ -47,7 +48,10 @@ export class DashboardComponent{
     console.log(this.descArr);
     console.log(this.dateArr);
   }
-  
+  onLogout():void{
+    this.tokenService.logout
+    this.router.navigate(['/login'])
+  }
 
 }
 

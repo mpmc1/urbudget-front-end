@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
 
 import {
   ChartComponent,
@@ -35,7 +36,7 @@ export class ChartsComponent{
   
   public valor = this.budget.budget.value.data.mothOutcomes;
   public datos = [this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor,this.valor];
-  constructor(private budget:ServiceRecordService) {
+  constructor(private budget:ServiceRecordService, private tokenService:TokenService) {
     
     
 
@@ -98,5 +99,6 @@ export class ChartsComponent{
       }
     };
   }
+ 
 
 }

@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { logInForm, signUpForm } from '../../models/security.model';
 import { UserModel } from '../../models/user.model';
 import { ServiceRecordService } from '../budget-service/service-record.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { ServiceRecordService } from '../budget-service/service-record.service';
 })
 export class TokenService {
   
-  constructor(private http: HttpClient, private budgetService:ServiceRecordService) {}
+  constructor(private http: HttpClient, private budgetService:ServiceRecordService, private router: Router) {}
   userProfile: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>({
     email: '',
     token: '',
@@ -36,10 +37,15 @@ export class TokenService {
     localStorage.setItem('user', JSON.stringify(user.email)?.replace(/['"]+/g, ''));    
   }
 
-  logout() {
+  public verifyLogged():boolean{
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
+ public logout():void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');    
-    
+    this.router.navigate(['/login']);
     
   }
 
