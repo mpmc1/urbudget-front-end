@@ -11,7 +11,7 @@ import { budget, budgetForm } from '../../models/dashboard.model';
 export class ServiceRecordService {
 
   constructor(private http: HttpClient) {}
-  private cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets';
+  private cadena = '';
 
   budget: BehaviorSubject<budget> = new BehaviorSubject<budget>({
     data: {
@@ -26,10 +26,12 @@ export class ServiceRecordService {
   }); 
 
   crearBudget(budgetForm:budgetForm){
+    this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets';
     return this.http.post<any>(this.cadena, budgetForm); 
   }
 
   getBudget(){
+    this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets';
     return this.http.get<any>(this.cadena);
   }
 

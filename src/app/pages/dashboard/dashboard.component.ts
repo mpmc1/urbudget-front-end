@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
 import { TransactionService } from 'src/app/shared/services/transaction-service/transaction.service';
 
-import { individualTransaction, transaction } from 'src/app/shared/models/dashboard.model';
+import { budget, individualTransaction, transaction } from 'src/app/shared/models/dashboard.model';
 import { BehaviorSubject} from 'rxjs';
 
 import { TokenService } from 'src/app/shared/services/token-service/token.service';
@@ -16,13 +16,16 @@ import { TokenService } from 'src/app/shared/services/token-service/token.servic
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{  
-  public year = this.budgetService.budget.value.data.year;
-  public ammount = this.budgetService.budget.value.data.ammount; 
+  public year = 0;
+  public ammount = 0; 
   public ammountArr: string[] = [];
   public descArr: string[] = [];
   public dateArr: Date[] = [];
-  prueba:string='';
-  aux:string='';
+  public ammountArrAux: string[] = [];
+  public descArrAux: string[] = [];
+  public dateArrAux: Date[] = [];
+  
+
   /*
   individual: BehaviorSubject<individualTransaction> = new BehaviorSubject<individualTransaction>({
     id: '',
@@ -36,7 +39,13 @@ export class DashboardComponent implements OnInit{
 
   
   ngOnInit(): void {
-      this.budgetService.getBudget();
+      this.budgetService.getBudget().subscribe({
+        next: (budget:budget) =>{
+          this.budgetService.setBudget(budget);
+        }
+      });
+    this.year = this.budgetService.budget.value.data.year;
+    this.ammount = this.budgetService.budget.value.data.ammount; 
   }
 
   constructor(private router: Router, private budgetService: ServiceRecordService, private transaction: TransactionService, private tokenService:TokenService) {    
@@ -49,38 +58,30 @@ export class DashboardComponent implements OnInit{
       }
     });
     
-    for (let i of this.transaction.transaction.value.data.values()){
-      this.ammountArr.push(JSON.parse(JSON.stringify(i)).ammount);   
-      this.descArr.push(JSON.parse(JSON.stringify(i)).description);
-      this.dateArr.push(JSON.parse(JSON.stringify(i)).dateOfTransaction)      
+    
+    
+    for (let i of this.transaction.transaction.value.data.values()){      
+      this.ammountArrAux.push(JSON.parse(JSON.stringify(i)).ammount);   
+      this.descArrAux.push(JSON.parse(JSON.stringify(i)).description);
+      this.dateArrAux.push(JSON.parse(JSON.stringify(i)).dateOfTransaction)      
     }
-    console.log(this.ammountArr);
-    console.log(this.descArr);
-    console.log(this.dateArr);
-    
-    
-    //for(let i = 0; i<this.transaction.transaction.value.data.length;i++){
-      //this.individual = JSON.parse(this.transaction.transaction.value.data[i]);
-      //console.log(this.transaction.transaction.value.data[i]);
-      //this.model = this.prueba; 
-      //this.ammountArr.push(this.aux);
-      /*console.log(this.model.value.id);*/
+    this.ammountArr = this.ammountArrAux;
+    this.descArr = this.descArrAux;
+    this.dateArr = this.dateArrAux;
 
-      /* this.prueba.value.ammount);
-      
-      this.descArr.push(this.prueba.value.description);
-      this.dateArr.push(this.prueba.value.dateOfTransaction); */
-    //}  
-    /*  
     console.log(this.ammountArr);
     console.log(this.descArr);
     console.log(this.dateArr);
-    */
+
+    this.ammountArrAux = [];
+    this.descArrAux = [];
+    this.dateArrAux = [];   
     
   }
+
   onLogout():void{
-    this.tokenService.logout
-    this.router.navigate(['/login'])
+    this.tokenService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

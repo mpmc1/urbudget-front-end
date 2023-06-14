@@ -4,25 +4,24 @@
         <app-record-out></app-record-out>
         <app-budget style="margin-left: 30px;"></app-budget>
     </div>
+    
+    <div class="table-container">
+        <table class="table table-bordered">
+            <caption>Current Budget</caption>
+            <tr style="background-color: var(--primary-color);">
+                <th scope="col">Budget</th>
+                <th scope="col">Year</th>
+            </tr>
+            <tr style="background-color: var(--quaternary-color);">
+                <td>{{ammount}}</td>
+                <td>{{year}}</td> 
+            </tr>
+        </table>
+        
+    </div>
+    <div class = "logout-container">
     <button mat-raised-button color ="terciario" (click)="onLogout()">LogOut</button>
-        <div class="table-container">
-            <table class="table table-bordered">
-                <caption>Current Budget</caption>
-                <tr>
-                    <th scope="col">Budget</th>
-                    <th scope="col">Year</th>
-                </tr>
-                <tr>
-                    <td>{{ammount}}</td>
-                    <td>{{year}}</td> 
-                </tr>
-            </table>
-            
-        </div>
-
+    </div>
     <button (click)="test()">Test</button>
-
-
-
 </div>    
 

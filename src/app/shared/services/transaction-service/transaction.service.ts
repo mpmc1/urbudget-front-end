@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionService {
-  private cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets/' + localStorage.getItem('budget') + '/transactions';
+  private cadena = '';
   constructor(private budgetService: ServiceRecordService, private http: HttpClient) { }
 
   transaction: BehaviorSubject<transaction> = new BehaviorSubject<transaction>({
@@ -16,18 +16,16 @@ export class TransactionService {
   }); 
 
   getTransactions(){
+    this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets/' + localStorage.getItem('budget') + '/transactions';
     return this.http.get<any>(this.cadena);
   }
 
   createTransaction(transactionForm:transactionForm){
+    this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets/' + localStorage.getItem('budget') + '/transactions';
     return this.http.post<any>(this.cadena,transactionForm)
   }
 
   setTransactions(transaction:transaction){
     this.transaction.next(transaction);
   }
-
-
-
-
 }

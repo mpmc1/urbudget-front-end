@@ -27,9 +27,7 @@ export class TokenService {
     return this.http.post<any>('http://localhost:8080/authenticate', logInForm);
   }
 
-  /* profile(): Observable<UserModel>{
-    return this.http.get<UserModel>('http://localhost:8080/api/v1/users/'+ UserModel.email, {withCredentials:true, });
-  } */
+  
 
   saveUserToLocal(user: UserModel){
     this.userProfile.next(user);    
@@ -44,11 +42,9 @@ export class TokenService {
 
  public logout():void {
     localStorage.removeItem('user');
-    localStorage.removeItem('token');    
-
+    localStorage.removeItem('token');
+    localStorage.removeItem('budget');
     this.router.navigate(['/login']);
-    
-
   }
 
 

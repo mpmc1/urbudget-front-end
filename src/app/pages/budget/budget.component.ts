@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { budget } from 'src/app/shared/models/dashboard.model';
 import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 
@@ -10,12 +11,12 @@ import { ServiceRecordService } from 'src/app/shared/services/budget-service/ser
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css']
 })
-export class BudgetComponent implements OnInit {
+export class BudgetComponent{
   modalVisible = false;
   budgetForm: FormGroup; 
   
 
-  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService) {
+  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService, private dashboard:DashboardComponent ) {
     this.budgetForm = this.formBuilder.group({
       year: ['', Validators.required],
       ammount: ['', Validators.required],
@@ -23,34 +24,27 @@ export class BudgetComponent implements OnInit {
       monthOutcomes: ['', Validators.required]
     });
   }
-  
-  ngOnInit(): void {
-    this.budgetService.getBudget().subscribe({
-      next: (budget:budget) => {
-        this.budgetService.setBudget(budget);
-      }
-    })    
-  }
-  
-
   openModal() {
     this.modalVisible = true;
   }
 
   closeModal() {
     this.modalVisible = false;
+    this.budgetService.getBudget().subscribe({
+      next: (budget:budget) =>{
+        this.budgetService.setBudget(budget);
+      }
+    });
+    this.dashboard.year = this.budgetService.budget.value.data.year;
+    this.dashboard.ammount = this.budgetService.budget.value.data.ammount;
+
   }
 
   saveBudget() {
     this.budgetService.crearBudget(this.budgetForm.value).subscribe({
-      next(budget:budget){
-      alert('Budget Registrado');
-      }
-    });
-
-    this.budgetService.getBudget().subscribe({
-      next: (budget:budget) => {
+      next: (budget:budget) =>{
         this.budgetService.setBudget(budget);
+      alert('Budget Registrado');
       }
     });
   }

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<button mat-raised-button color="primary" class="button" (click)="openModal()" style="margin-right: 10px;">Record Budget</button>
+<button mat-raised-button (click)="openModal()" style="margin-right: 10px;background-color: var(--secondary-color);">Record Budget</button>
 
 <div class="modal animate__animated animate__fadeInDown" [class.d-block]="modalVisible">
   <div class="modal-dialog">
@@ -29,8 +29,8 @@
             <label for="monthOutcomes">Expected Outcome</label>
             <input type="number" id="monthOutcomes" class="form-control" placeholder="Expected Outcome" formControlName="monthOutcomes" >
           </div>
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button type="submit" class="btn btn-primary" style="background-color: var(--quaternary-color);">Save</button>
+          <button type="button" class="btn btn-secondary" style="background-color: var(--terciary-color);margin-left: 2%;" (click)="closeModal()">Close</button>
         </form>
       </div>
     </div>

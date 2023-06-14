@@ -12,19 +12,20 @@ body {
 
   --background-color: rgb(231, 231, 231);
   --primary-color: rgb(8, 126, 139);
-  --secondary-color: rgb(249, 199, 132);
+  --secondary-color: rgb(252, 175, 75);
   --terciary-color: rgb(252, 122, 30);
+  --quaternary-color: rgb(2, 152, 168);
   
   
 }
 .wh-full{
   width: 100%;
-  height: calc(100% - 3em);
-  
+  height: calc(100% - 3em);  
 }
 
 a{
   color:var(--terciary-color);
 }
+
 
 
