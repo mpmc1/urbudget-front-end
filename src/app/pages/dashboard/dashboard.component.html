@@ -1,1 +1,42 @@
-<app-charts></app-charts>
+<div class="general-container">
+    <app-charts style="margin-top: 30px; width: 100%;"></app-charts>
+    <div class="modal-buttons">
+        <app-record-out></app-record-out>
+        <app-budget style="margin-left: 30px;"></app-budget>
+    </div>
+    
+    <div class="table-container">
+        <h2>Current Budget</h2>
+        <table class="table table-bordered">
+            <tr style="background-color: var(--primary-color);">
+                <th scope="col">Budget</th>
+                <th scope="col">Year</th>
+            </tr>
+            <tr style="background-color: var(--quaternary-color);">
+                <td>{{ammount}}</td>
+                <td>{{year}}</td> 
+            </tr>
+        </table>
+        
+    </div>
+    <div class="table-container" *ngIf="transactions && transactions.length > 0">
+        <h2>Transactions</h2>
+        <table class="table table-bordered">
+            <tr style="background-color: var(--primary-color);">
+                <th scope="col">Date</th>
+                <th scope="col">Ammount</th>
+                <th scope="col">Description</th>
+            </tr>
+            <tr *ngFor="let transaction of transactions"  style="background-color: var(--quaternary-color);">
+                <td>{{transaction.dateOfTransaction}}</td>
+                <td>{{transaction.ammount}}</td> 
+                <td>{{transaction.description}}</td> 
+            </tr>
+        </table>
+        
+    </div>
+    <div class = "logout-container">
+    <button mat-raised-button style="background-color: rgb(236, 97, 97);" (click)="onLogout()">LogOut <mat-icon>logout</mat-icon></button>
+    </div>
+</div>    
+

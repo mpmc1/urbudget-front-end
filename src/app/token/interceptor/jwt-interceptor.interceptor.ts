@@ -7,7 +7,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { TokenService } from '../../shared/services/token.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
 
 @Injectable()
 export class JwtInterceptorInterceptor implements HttpInterceptor {
@@ -19,15 +19,17 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
 
     if (token){
       request = request.clone({
-        setHeaders: {
-          Authorization: `token ${token}`,
-       },
+        /* setHeaders: {
+          Authorization: 'token ' + token,
+       }, */
+       headers: request.headers.set("Authorization", "Bearer "+ token)
+       
       });
     }
     
     return next.handle(request).pipe(
       catchError((err) => {
-        if (err.status ===401){
+        if (err.status === 401){
           this.tokenService.logout();
         }
         const error = err.error.message || err.statusText;

@@ -1,6 +1,6 @@
-<div class="wh-full container">
-  <div class="box">
-    <div class="form-container">
+<div class="wh-full contenedor animate__animated animate__bounceIn">
+  <div class="caja">
+    <div class="form-container ">
         <h1>WELCOME BACK!</h1>
         <form [formGroup]="logInForm">
         <mat-form-field>
@@ -11,7 +11,7 @@
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password">
         </mat-form-field>
-        <button mat-raised-button color ="terciario" (click)="logIn()">LogIn</button>
+        <button mat-raised-button color ="terciario" style="background-color: var(--terciary-color);" (click)="logIn()">LogIn</button>
         </form>
         <span style="margin-top: 25px;">Are you new? &nbsp;<a [routerLink]="['/signUp']">SignUp</a></span>
     </div>

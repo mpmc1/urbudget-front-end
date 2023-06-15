@@ -1,10 +1,10 @@
-.container{
+.contenedor{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
 }
 
-.box{
+.caja{
     width: 70%;
     height: 80%;
     background-color: var(--primary-color);
@@ -13,13 +13,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0 20px 0 20px;    
+    padding: 0 20px 0 20px;      
 }
+
 h1{
     font-size: 250%;
-    margin-bottom: 10%;
-    
+    margin-bottom: 10%;    
 }
+
 .form-container{
     width: 35%;
     border-right: 1px solid;

@@ -1,7 +1,8 @@
 import { Component,OnInit} from '@angular/core';
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { TokenService } from 'src/app/shared/services/token-service/token.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ import { TokenService } from 'src/app/shared/services/token.service';
 export class SignUpComponent implements OnInit{
 
   public signUpForm !: FormGroup
-  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService) { }
+  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService, private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -27,10 +28,11 @@ export class SignUpComponent implements OnInit{
   signUp(){
     this.tokenService.signUp(this.signUpForm.value)
     .subscribe(res=>{
-      alert("Signed Up")
+      this.toast.success("Signed Up successfully")
       this.router.navigate(['/login'])
     },err=>{
-      alert("Something went wrong")
+      console.error(err);
+      this.toast.error("Something went wrong")
     })
   }
 }

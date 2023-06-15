@@ -1,0 +1,8 @@
+.btn-primary{
+    background-color: var(--secondary-color);
+}
+
+.btn-secondary{
+    background-color: var(--primary-color);
+}
+

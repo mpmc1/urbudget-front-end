@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<button mat-raised-button (click)="openModal()" style="margin-right: 10px;background-color: var(--secondary-color);">Record Budget</button>
+
+<div class="modal animate__animated animate__fadeInDown" [class.d-block]="modalVisible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Register Budget</h2>
+        <button type="button" class="close" (click)="closeModal()" >
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="budgetForm" (submit)="saveBudget()">
+          <div class="form-group">
+            <label for="year">Year</label>
+            <input type="number" id="year" class="form-control" placeholder="Year" formControlName="year" >
+          </div>
+          <div class="form-group">
+            <label for="ammount">Amount</label>
+            <input type="number" id="ammount" class="form-control" placeholder="Amount" formControlName="ammount" >
+          </div>
+          <div class="form-group">
+            <label for="monthIncomes">Expected Income</label>
+            <input type="number" id="monthIncomes" class="form-control" placeholder="Expected Income" formControlName="monthIncomes" >
+          </div>
+          <div class="form-group">
+            <label for="monthOutcomes">Expected Outcome</label>
+            <input type="number" id="monthOutcomes" class="form-control" placeholder="Expected Outcome" formControlName="monthOutcomes" >
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: var(--quaternary-color);">Save</button>
+          <button type="button" class="btn btn-secondary" style="background-color: var(--terciary-color);margin-left: 2%;" (click)="closeModal()">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

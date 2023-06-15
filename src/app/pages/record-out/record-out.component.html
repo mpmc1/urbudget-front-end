@@ -1,0 +1,28 @@
+<button class="boton" mat-raised-button  style="background-color: var(--secondary-color);" (click)="openOutcomesModal()">Record Incomes</button>
+
+  <div class="modal animate__animated animate__fadeInDown" [class.d-block]="outcomesModalVisible">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Record Income</h2>
+          <button type="button" class="close" color (click)="closeOutcomesModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="transactionForm" (submit)="saveOutcomes()">
+            <div class="form-group">
+              <label for="outcomesAmount">Amount</label>
+              <input type="number" id="outcomesAmount" class="form-control" placeholder="Amount" formControlName="ammount">
+            </div>
+            <div class="form-group">
+              <label for="outcomesDescription">Description</label>
+              <input type="text" id="outcomesDescription" class="form-control" placeholder="Description" formControlName="description">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: var(--quaternary-color);">Save</button>
+            <button type="button" class="btn btn-secondary" style="background-color: var(--terciary-color);margin-left: 2%;" (click)="closeOutcomesModal()">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
