@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { budget } from 'src/app/shared/models/dashboard.model';
 import { ServiceRecordService } from 'src/app/shared/services/budget-service/service-record.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -16,7 +17,7 @@ export class BudgetComponent{
   budgetForm: FormGroup; 
   
 
-  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService, private dashboard:DashboardComponent ) {
+  constructor(private formBuilder: FormBuilder, private budgetService:ServiceRecordService, private dashboard:DashboardComponent, private toast:ToastrService ) {
     this.budgetForm = this.formBuilder.group({
       year: ['', Validators.required],
       ammount: ['', Validators.required],
@@ -44,7 +45,12 @@ export class BudgetComponent{
     this.budgetService.crearBudget(this.budgetForm.value).subscribe({
       next: (budget:budget) =>{
         this.budgetService.setBudget(budget);
-      alert('Budget Registrado');
+        this.toast.success("Budget Recorded")
+      },
+      error:(err)=>{
+        console.error(err);
+        this.toast.error("Cannot record budget")
+        
       }
     });
   }

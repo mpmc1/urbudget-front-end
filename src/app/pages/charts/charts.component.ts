@@ -97,7 +97,6 @@ export class ChartsComponent implements OnInit{
     this.budgetService.getBudget().subscribe(budget=>{
       if(budget.data){
         this.transactionService.getTransactions(budget.data.id).subscribe(transactions=>{
-          console.log('transactions', transactions);
           
           if(transactions?.data?.length > 0)  {
             transactions.data.map(transaction=>{
@@ -108,7 +107,6 @@ export class ChartsComponent implements OnInit{
           for (let i = 0; i < 12; i++) {
             this.expectedSeries[i] = (budget.data.ammount/12)*(i+1)          
           }
-          console.log(this.currentSeries);
           
           this.series = [
             {

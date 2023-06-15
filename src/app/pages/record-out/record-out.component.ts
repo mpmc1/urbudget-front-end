@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { transaction } from 'src/app/shared/models/dashboard.model';
 import { TransactionService } from 'src/app/shared/services/transaction-service/transaction.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-record-out',
@@ -15,7 +16,7 @@ export class RecordOutComponent implements OnInit{
   outcomesModalVisible = false;
   transactionForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private transactionService:TransactionService) {
+  constructor(private formBuilder: FormBuilder, private transactionService:TransactionService, private toast:ToastrService) {
     this.transactionForm = this.formBuilder.group({
       ammount: ['', Validators.required],
       description: ['', Validators.required],      
@@ -50,8 +51,12 @@ export class RecordOutComponent implements OnInit{
 
   saveOutcomes() {
     this.transactionService.createTransaction(this.transactionForm.value).subscribe({
-      next(transaction:transaction){
-      alert('Transaction Sent');
+      next:(transaction:any)=>{
+        this.toast.success(`Transaction recorded`)
+      },
+      error: (err)=>{
+        console.error(err);
+        this.toast.error("Cannot record transaction")
       }
     })
   }

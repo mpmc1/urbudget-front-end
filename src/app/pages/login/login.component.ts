@@ -3,6 +3,7 @@ import {Router} from '@angular/router'
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { TokenService } from 'src/app/shared/services/token-service/token.service';
 import { UserModel } from 'src/app/shared/models/user.model';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
   public logInForm !: FormGroup
   state: string = 'none';
   
-  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService) { 
+  constructor(private formBuilder: FormBuilder,  private router: Router, private tokenService:TokenService, private toast:ToastrService) { 
     
   }
   ngOnInit(): void {
@@ -30,11 +31,10 @@ export class LoginComponent implements OnInit{
       next: (user: UserModel) => {
         user.email = this.logInForm.get(['username'])?.value;
         this.tokenService.saveUserToLocal(user);
-        alert('Wellcome');
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
-        alert('Login Failed');
+        this.toast.error("Invalid Credentials")
       }
     })    
   }

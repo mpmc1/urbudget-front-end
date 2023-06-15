@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptorInterceptor } from './token/interceptor/jwt-interceptor.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -26,7 +27,8 @@ import { JwtInterceptorInterceptor } from './token/interceptor/jwt-interceptor.i
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,  
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
