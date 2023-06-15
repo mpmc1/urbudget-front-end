@@ -32,7 +32,7 @@ export class ServiceRecordService {
 
   getBudget(){
     this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets';
-    return this.http.get<any>(this.cadena);
+    return this.http.get<budget>(this.cadena);
   }
 
   setBudget(budget:budget){

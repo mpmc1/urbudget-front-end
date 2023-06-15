@@ -11,13 +11,13 @@ export interface budget{
         ammount: number,
         monthIncomes: number,
         mothOutcomes: number,
-        user: {}
+        user: any
     },
     message: []
 }
 export interface transaction{
-    data: [],
-    message: []
+    data: individualTransaction[],
+    message: string[]
 }
 
 export interface transactionForm{
@@ -30,5 +30,5 @@ export interface individualTransaction{
     dateOfTransaction: Date,
     ammount: number, 
     description: string, 
-    budget: {}
+    budget: budget
 }

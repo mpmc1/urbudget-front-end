@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionService {
-  private cadena = '';
+  private cadena: string = '';
   constructor(private budgetService: ServiceRecordService, private http: HttpClient) { }
 
   transaction: BehaviorSubject<transaction> = new BehaviorSubject<transaction>({
@@ -15,9 +15,9 @@ export class TransactionService {
     message: []
   }); 
 
-  getTransactions(){
-    this.cadena = 'api/v1/transaction/users/' + localStorage.getItem('user') + '/budgets/' + localStorage.getItem('budget') + '/transactions';
-    return this.http.get<any>(this.cadena);
+  getTransactions(budgetId?:string){
+    this.cadena = `api/v1/transaction/users/${localStorage.getItem('user')}/budgets/${budgetId ? budgetId :localStorage.getItem('budget')}/transactions`;
+    return this.http.get<transaction>(this.cadena??'');
   }
 
   createTransaction(transactionForm:transactionForm){

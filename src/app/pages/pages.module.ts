@@ -11,6 +11,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 import { BudgetComponent } from './budget/budget.component';
 import { RecordOutComponent } from './record-out/record-out.component';
 
@@ -34,6 +36,8 @@ const PAGES=[
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    MatIconModule,
+    MatTableModule
   ],
   exports:[PAGES]
 })
