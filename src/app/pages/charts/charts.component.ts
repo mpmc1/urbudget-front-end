@@ -101,7 +101,7 @@ export class ChartsComponent implements OnInit{
           if(transactions?.data?.length > 0)  {
             transactions.data.map(transaction=>{
               let month = new Date(transaction.dateOfTransaction).getMonth();
-              this.currentSeries[month-1] +=  transaction.ammount;
+              this.currentSeries[month] +=  transaction.ammount;
             })
           }
           for (let i = 0; i < 12; i++) {
