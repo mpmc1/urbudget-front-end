@@ -93,7 +93,8 @@ export class ChartsComponent implements OnInit{
       }
     };
   }
-  ngOnInit(): void {
+
+  getInfo(){
     this.budgetService.getBudget().subscribe(budget=>{
       if(budget.data){
         this.transactionService.getTransactions(budget.data.id).subscribe(transactions=>{
@@ -124,7 +125,13 @@ export class ChartsComponent implements OnInit{
     })
     
     
+  } 
+  ngOnInit(): void {
+    this.transactionService.transactionChangeListener.subscribe(res=>{
+      if(res == true){
+        this.getInfo();
+      }
+    })
+    this.getInfo();
   }
- 
-
 }

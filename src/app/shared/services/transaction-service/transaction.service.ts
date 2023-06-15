@@ -15,6 +15,8 @@ export class TransactionService {
     message: []
   }); 
 
+  transactionChangeListener:BehaviorSubject<boolean> = new BehaviorSubject(false)
+
   getTransactions(budgetId?:string){
     this.cadena = `api/v1/transaction/users/${localStorage.getItem('user')}/budgets/${budgetId ? budgetId :localStorage.getItem('budget')}/transactions`;
     return this.http.get<transaction>(this.cadena??'');

@@ -53,6 +53,9 @@ export class RecordOutComponent implements OnInit{
     this.transactionService.createTransaction(this.transactionForm.value).subscribe({
       next:(transaction:any)=>{
         this.toast.success(`Transaction recorded`)
+        this.transactionService.transactionChangeListener.next(true)
+        this.closeOutcomesModal()
+        
       },
       error: (err)=>{
         console.error(err);

@@ -46,6 +46,7 @@ export class BudgetComponent{
       next: (budget:budget) =>{
         this.budgetService.setBudget(budget);
         this.toast.success("Budget Recorded")
+        this.closeModal();
       },
       error:(err)=>{
         console.error(err);

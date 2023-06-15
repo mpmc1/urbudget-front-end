@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit{
   public ammount = 0; 
   transactions:individualTransaction[]|undefined;
 
+  constructor(private router: Router, private budgetService: ServiceRecordService, private transaction: TransactionService, private tokenService:TokenService) {    
+  }  
   
   ngOnInit(): void {
       this.budgetService.getBudget().subscribe({
@@ -29,11 +31,13 @@ export class DashboardComponent implements OnInit{
           this.ammount = budget.data.ammount; 
         }
       });
-      
+      this.transaction.transactionChangeListener.subscribe(res=>{
+        if(res == true){
+          this.getAndSetTransactions();
+        }
+      })
   }
 
-  constructor(private router: Router, private budgetService: ServiceRecordService, private transaction: TransactionService, private tokenService:TokenService) {    
-  }  
 
   getAndSetTransactions(){    
     this.transaction.getTransactions().subscribe({
